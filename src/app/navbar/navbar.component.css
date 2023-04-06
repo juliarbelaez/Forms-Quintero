@@ -1,0 +1,13 @@
+.navbar {
+  height: 100px;
+  padding: 30px;
+}
+.nav-link {
+  color: white;
+  font-size: larger;
+}
+.navbar-text {
+  font-style: italic;
+  color: #fafafa;
+  font-size: small;
+}

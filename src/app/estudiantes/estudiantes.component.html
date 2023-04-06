@@ -1,0 +1,87 @@
+<main class="container-fluid">
+  <section class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Inscribir estudiantes</h5>
+      <p>
+        Por favor llena los datos de los estudiantes y el curso a inscribir:
+      </p>
+
+      <form [formGroup]="estudianteForm" (ngSubmit)="onSubmit()" class="row">
+        <div class="row g-3">
+          <div class="col-4">
+            <input
+              formControlName="nombre"
+              type="text"
+              [class.is-invalid]="
+                nombreControl.invalid && nombreControl.touched
+              "
+              class="form-control"
+              placeholder="First name"
+              aria-label="First name"
+            />
+            <app-form-error-helper
+              *ngIf="nombreControl.invalid && nombreControl.touched"
+              [formErrors]="nombreControl.errors"
+            ></app-form-error-helper>
+          </div>
+
+          <div class="col-4">
+            <input
+              [class.is-invalid]="
+                apellidoControl.invalid && apellidoControl.touched
+              "
+              formControlName="apellido"
+              type="text"
+              class="form-control"
+              placeholder="Last name"
+              aria-label="Last name"
+            />
+            <app-form-error-helper
+              *ngIf="apellidoControl.invalid && apellidoControl.touched"
+              [formErrors]="apellidoControl.errors"
+            ></app-form-error-helper>
+          </div>
+          <div class="col-4">
+            <input
+              [class.is-invalid]="emailControl.invalid && emailControl.touched"
+              [formControl]="emailControl"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="Email"
+            />
+            <app-form-error-helper
+              *ngIf="emailControl.invalid && emailControl.touched"
+              [formErrors]="emailControl.errors"
+            ></app-form-error-helper>
+          </div>
+        </div>
+
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          [formControlName="curso"
+          ]
+        >
+          <option selected>Selecciona el idioma</option>
+          <option value="1">Inglés A1</option>
+          <option value="2">Inglés A2</option>
+          <option value="3">Inglés B1</option>
+          <option value="3">Inglés B2</option>
+          <option value="3">Inglés C1</option>
+        </select>
+
+        <div class="col-12 mt-3">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-body">
+      <h5 class="card-title">Listado de estudiantes</h5>
+      <pre>{{ estudiantes | json }}</pre>
+    </div>
+  </section>
+</main>
