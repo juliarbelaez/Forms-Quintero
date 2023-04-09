@@ -6,39 +6,59 @@
         Por favor llena los datos de los estudiantes y el curso a inscribir:
       </p>
 
-      <form [formGroup]="">
+      <form [formGroup]="estudiantesForm" (ngSubmit)="onSubmit()" class="row">
         <div class="col">
           <label for="colFormLabel" class="col-sm-12 col-form-label"
             >Identificación</label
           >
           <input
+            formControlName="id"
             type="text"
+            [class.is-invalid]="idControl.invalid && idControl.touched"
             class="form-control"
             placeholder="Id del estudiante"
             aria-label="Id del estudiante"
           />
+          <div *ngIf="idControl.hasError('required')" class="invalid-feedback">
+            Campo requerido
+          </div>
+          <div *ngIf="idControl.hasError('minlength')" class="invalid-feedback">
+            Minimo 8 caracteres
+          </div>
+          <div *ngIf="idControl.hasError('maxlength')" class="invalid-feedback">
+            Maximo 10 caracteres
+          </div>
         </div>
+
         <div class="col">
           <label for="colFormLabel" class="col-sm-12 col-form-label"
             >Nombre</label
           >
           <input
+            formControlName="nombre"
             type="text"
+            [class.is-invalid]="nombreControl.invalid && nombreControl.touched"
             class="form-control"
             placeholder="Nombre del estudiante"
             aria-label="Nombre del estudiante"
           />
+          <div class="invalid-feedback">Campo requerido</div>
         </div>
         <div class="col">
           <label for="colFormLabel" class="col-sm-12 col-form-label"
             >Apellido</label
           >
           <input
+            formControlName="apellido"
             type="text"
+            [class.is-invalid]="
+              apellidoControl.invalid && apellidoControl.touched
+            "
             class="form-control"
             placeholder="Apellido del estudiante"
             aria-label="Apellido del estudiante"
           />
+          <div class="invalid-feedback">Campo requerido</div>
         </div>
         <div class="row mb-3">
           <label for="colFormLabel" class="col-sm-12 col-form-label"
@@ -46,18 +66,20 @@
           >
           <div class="col-sm-6">
             <input
+              formControlName="email"
               type="email"
+              [class.is-invalid]="emailControl.invalid && emailControl.touched"
               class="form-control"
               id="colFormLabel"
               placeholder="Email del estudiante"
             />
+            <div class="invalid-feedback">Campo requerido</div>
           </div>
         </div>
+        <div class="col-12 mt-3">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
       </form>
-
-      <div class="col-12 mt-3">
-        <button class="btn btn-primary" type="submit">Registrar</button>
-      </div>
     </div>
   </section>
   <table class="table">
