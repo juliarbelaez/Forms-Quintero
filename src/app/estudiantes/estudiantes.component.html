@@ -6,82 +6,87 @@
         Por favor llena los datos de los estudiantes y el curso a inscribir:
       </p>
 
-      <form [formGroup]="estudianteForm" (ngSubmit)="onSubmit()" class="row">
-        <div class="row g-3">
-          <div class="col-4">
+      <form [formGroup]="">
+        <div class="col">
+          <label for="colFormLabel" class="col-sm-12 col-form-label"
+            >Identificación</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Id del estudiante"
+            aria-label="Id del estudiante"
+          />
+        </div>
+        <div class="col">
+          <label for="colFormLabel" class="col-sm-12 col-form-label"
+            >Nombre</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del estudiante"
+            aria-label="Nombre del estudiante"
+          />
+        </div>
+        <div class="col">
+          <label for="colFormLabel" class="col-sm-12 col-form-label"
+            >Apellido</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Apellido del estudiante"
+            aria-label="Apellido del estudiante"
+          />
+        </div>
+        <div class="row mb-3">
+          <label for="colFormLabel" class="col-sm-12 col-form-label"
+            >Email</label
+          >
+          <div class="col-sm-6">
             <input
-              formControlName="nombre"
-              type="text"
-              [class.is-invalid]="
-                nombreControl.invalid && nombreControl.touched
-              "
-              class="form-control"
-              placeholder="First name"
-              aria-label="First name"
-            />
-            <app-form-error-helper
-              *ngIf="nombreControl.invalid && nombreControl.touched"
-              [formErrors]="nombreControl.errors"
-            ></app-form-error-helper>
-          </div>
-
-          <div class="col-4">
-            <input
-              [class.is-invalid]="
-                apellidoControl.invalid && apellidoControl.touched
-              "
-              formControlName="apellido"
-              type="text"
-              class="form-control"
-              placeholder="Last name"
-              aria-label="Last name"
-            />
-            <app-form-error-helper
-              *ngIf="apellidoControl.invalid && apellidoControl.touched"
-              [formErrors]="apellidoControl.errors"
-            ></app-form-error-helper>
-          </div>
-          <div class="col-4">
-            <input
-              [class.is-invalid]="emailControl.invalid && emailControl.touched"
-              [formControl]="emailControl"
               type="email"
               class="form-control"
-              placeholder="Email"
-              aria-label="Email"
+              id="colFormLabel"
+              placeholder="Email del estudiante"
             />
-            <app-form-error-helper
-              *ngIf="emailControl.invalid && emailControl.touched"
-              [formErrors]="emailControl.errors"
-            ></app-form-error-helper>
           </div>
         </div>
-
-        <select
-          class="form-select"
-          aria-label="Default select example"
-          [formControlName="curso"
-          ]
-        >
-          <option selected>Selecciona el idioma</option>
-          <option value="1">Inglés A1</option>
-          <option value="2">Inglés A2</option>
-          <option value="3">Inglés B1</option>
-          <option value="3">Inglés B2</option>
-          <option value="3">Inglés C1</option>
-        </select>
-
-        <div class="col-12 mt-3">
-          <button class="btn btn-primary" type="submit">Registrar</button>
-        </div>
       </form>
-    </div>
-  </section>
 
-  <section class="card">
-    <div class="card-body">
-      <h5 class="card-title">Listado de estudiantes</h5>
-      <pre>{{ estudiantes | json }}</pre>
+      <div class="col-12 mt-3">
+        <button class="btn btn-primary" type="submit">Registrar</button>
+      </div>
     </div>
   </section>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2"></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </main>

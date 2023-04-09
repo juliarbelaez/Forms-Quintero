@@ -38,13 +38,4 @@ export class EstudiantesComponent {
       curso: this.cursoControl,
     });
   }
-
-  onSubmit(): void {
-    if (this.estudianteForm.valid) {
-      this.estudiantes.push(this.estudianteForm.value);
-      this.estudianteForm.reset();
-    } else {
-      this.estudianteForm.markAllAsTouched();
-    }
-  }
 }
