@@ -60,6 +60,7 @@
           />
           <div class="invalid-feedback">Campo requerido</div>
         </div>
+
         <div class="row mb-3">
           <label for="colFormLabel" class="col-sm-12 col-form-label"
             >Email</label
@@ -76,39 +77,76 @@
             <div class="invalid-feedback">Campo requerido</div>
           </div>
         </div>
+        <div class="col">
+          <label for="colFormLabel" class="col-sm-12 col-form-label"
+            >Curso a matricular</label
+          >
+          <div class="col-sm-6">
+            <select
+              formControlName="curso"
+              class="form-select"
+              aria-label="Curso"
+              [class.is-invalid]="cursoControl.invalid && cursoControl.touched"
+            >
+              <option selected>Nivel</option>
+              <option value="Inglés A1">Inglés A1</option>
+              <option value="Inglés A2">Inglés A2</option>
+              <option value="Inglés B1">Inglés B1</option>
+              <option value="Inglés B2">Inglés B2</option>
+              <option value="Inglés C1">Inglés C1</option>
+              <option value="Francés A1">Francés A1</option>
+              <option value="Francés A2">Francés A2</option>
+              <option value="Francés B1">Francés B1</option>
+              <option value="Francés B2">Francés B2</option>
+            </select>
+            <div class="invalid-feedback">Campo requerido</div>
+          </div>
+        </div>
         <div class="col-12 mt-3">
           <button class="btn btn-primary" type="submit">Registrar</button>
         </div>
       </form>
     </div>
   </section>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2"></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h5>Lista de estudiantes:</h5>
+
+  <div class="container">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th class="col" scope="col">Id</th>
+          <th class="col" scope="col">Nombre</th>
+          <th class="col" scope="col">Apellido</th>
+          <th class="col" scope="col">E-mail</th>
+          <th class="col" scope="col">Curso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estudiante of estudiantes">
+          <th class="col" scope="row">{{ estudiante.id }}</th>
+          <td>{{ estudiante.nombre }}</td>
+          <td>{{ estudiante.apellido }}</td>
+          <td>{{ estudiante.email }}</td>
+          <td
+            class="curso"
+            [ngClass]="{
+              inglesA1: estudiante.curso === 'Inglés A1',
+              inglesA2: estudiante.curso === 'Inglés A2',
+              inglesB1: estudiante.curso === 'Inglés B1',
+              inglesB2: estudiante.curso === 'Inglés B2',
+              inglesC1: estudiante.curso === 'Inglés C1',
+              inglesC2: estudiante.curso === 'Inglés C2',
+              francesA1: estudiante.curso === 'Francés A1',
+              francesA2: estudiante.curso === 'Francés A2',
+              francesB1: estudiante.curso === 'Francés B1',
+              francesB2: estudiante.curso === 'Francés B2'
+            }"
+          >
+            {{ estudiante.curso }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </main>

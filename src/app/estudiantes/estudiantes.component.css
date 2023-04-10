@@ -1,0 +1,39 @@
+.container-fluid {
+  padding: 20px;
+}
+section {
+  background-color: white;
+}
+.curso {
+  background-color: aqua;
+}
+.inglesA1 {
+  background-color: red;
+}
+.inglesA2 {
+  background-color: blue;
+}
+.inglesB1 {
+  background-color: green;
+}
+.inglesB2 {
+  background-color: blueviolet;
+}
+.inglesC1 {
+  background-color: gray;
+}
+.inglesC2 {
+  background-color: purple;
+}
+.francesA1 {
+  background-color: yellow;
+}
+.francesA2 {
+  background-color: orange;
+}
+.francesB1 {
+  background-color: pink;
+}
+.francesB2 {
+  background-color: brown;
+}
