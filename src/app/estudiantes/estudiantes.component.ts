@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent {
+  estudiantes: any[] = [];
   estudiantesForm: FormGroup;
 
   idControl = new FormControl('', [
@@ -17,6 +18,7 @@ export class EstudiantesComponent {
   nombreControl = new FormControl('', [Validators.required]);
   apellidoControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
+  cursoControl = new FormControl('', Validators.required);
 
   constructor() {
     this.estudiantesForm = new FormGroup({
@@ -24,11 +26,13 @@ export class EstudiantesComponent {
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       email: this.emailControl,
+      curso: this.cursoControl,
     });
   }
   onSubmit(): void {
-    if (this.estudiantesForm.value) {
-      console.log(this.estudiantesForm);
+    if (this.estudiantesForm.valid) {
+      this.estudiantes.push(this.estudiantesForm.value);
+      this.estudiantesForm.reset();
     } else {
       alert('No es válido');
     }
