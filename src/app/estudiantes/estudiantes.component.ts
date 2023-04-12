@@ -34,6 +34,7 @@ export class EstudiantesComponent {
       this.estudiantes.push(this.estudiantesForm.value);
       this.estudiantesForm.reset();
     } else {
+      this.estudiantesForm.markAllAsTouched();
       alert('No es válido');
     }
   }
